@@ -34,4 +34,4 @@ scraper.get("https://www.newegg.com/p/N82E16813157833", product => {
 
 ## Bugs
 
-You can use the GitHub issues or send me an [email](mailto:jonahisadev@gmail.com) and I'll take a look.
+You can use the GitHub issues or send me an [email](mailto:jonahisadev@gmail.com?subject=Scrape%20NewEgg%20Bug) and I'll take a look.
