@@ -6,7 +6,7 @@ const request = require('request');
 const $ = require('cheerio');
 
 function convert_key(key) {
-	return key.replace(/\s{1}/g, key).toLowerCase();
+	return key.replace(/\s/gi, "_").toLowerCase();
 }
 
 module.exports.get = (url, cb) => {
@@ -18,6 +18,9 @@ module.exports.get = (url, cb) => {
 			image_url: "https:",
 			specs: {},
 			name: () => {
+				if (json.specs.model.hasOwnProperty("name")) {
+					return json.specs.model.name;
+				}
 				var name = "";
 				name += json.specs.model.brand + " ";
 				if (json.specs.model.hasOwnProperty('series'))
