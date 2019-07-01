@@ -1,0 +1,26 @@
+{
+  "name": "scrape-newegg",
+  "version": "1.0.0",
+  "description": "An API for scraping NewEgg product information",
+  "main": "main.js",
+  "scripts": {
+    "start": "node .",
+    "test": "node test.js"
+  },
+  "keywords": ["newegg", "scraper", "api"],
+  "author": "jonahisadev",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.0"
+  },
+  "homepage": "https://github.com/jonahisadev/scrape-newegg",
+  "bugs": {
+    "url": "https://github.com/jonahisadev/scrape-newegg/issues",
+    "email": "jonahisadev@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonahisadev/scrape-newegg.git"
+  }
+}
