@@ -1,13 +1,17 @@
 {
   "name": "scrape-newegg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An API for scraping NewEgg product information",
   "main": "main.js",
   "scripts": {
     "start": "node .",
     "test": "node test.js"
   },
-  "keywords": ["newegg", "scraper", "api"],
+  "keywords": [
+    "newegg",
+    "scraper",
+    "api"
+  ],
   "author": "jonahisadev",
   "license": "MIT",
   "dependencies": {
