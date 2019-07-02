@@ -22,14 +22,26 @@ Everything is then returned as a JSON object for ease of use.
 ```js
 const scraper = require('scrape-newegg');
 
-scraper.get("https://www.newegg.com/p/N82E16813157833", product => {
-	console.log(product.name() + " is " + product.priceStr());
-	console.log("Image URL: " + product.image_url);
-});
+function printProduct(prod) {
+	console.log("The " + prod.name() + " is " + prod.priceStr());
+	console.log("Image URL: " + prod.image_url);
+	console.log("Rating: " + prod.rating);
+}
 
-// The ASRock X470 Master SLI/AC is 139.99 USD
-// Image URL: https://c1.neweggimages.com/NeweggImage/ProductImageCompressAll1280/13-157-833-V09.jpg
+// Full URL
+scraper.get("https://www.newegg.com/p/N82E16819113499", (prod) => printProduct(prod));
 
+// The AMD Ryzen 7 2700X is 306.38 USD
+// Image URL: https://c1.neweggimages.com/ProductImageCompressAll1280/19-113-499-V01.jpg
+// Rating: 5
+
+
+// Product ID
+scraper.get("N82E16814202237", (prod) => printProduct(prod));
+
+// The SAPPHIRE 100385L is 79.99 USD
+// Image URL: https://c1.neweggimages.com/ProductImageCompressAll1280/14-202-237-01.jpg
+// Rating: 4
 ```
 
 ## Bugs

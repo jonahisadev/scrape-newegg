@@ -10,11 +10,15 @@ function convert_key(key) {
 }
 
 module.exports.get = (url, cb) => {
+	if (!url.startsWith('https://'))
+		url = "https://www.newegg.com/p/" + url;
+	
 	request(url, (err, res, body) => {
 		var html = $.load(body);
 		var json = {
 			price: 0.0,
 			currency: "",
+			rating: 0,
 			image_url: "https:",
 			specs: {},
 			name: () => {
@@ -46,7 +50,8 @@ module.exports.get = (url, cb) => {
 		});
 
 		// Image URL
-		json.image_url += html("span.mainSlide").attr("imgzoompic");
+		json.image_url += html("span.mainSlide")
+			.attr("imgzoompic");
 
 		// Specs
 		html("div#Specs").children("fieldset").map((i, fieldset) => {
@@ -58,6 +63,11 @@ module.exports.get = (url, cb) => {
 				json.specs[category][key] = val;
 			});
 		});
+
+		// Rating
+		json.rating = parseInt(html("div[itemprop='aggregateRating']").
+			find("span[itemprop='ratingValue']").
+			attr("content"));
 
 		cb(json);
 	});
