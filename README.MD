@@ -46,4 +46,4 @@ scraper.get("N82E16814202237", (prod) => printProduct(prod));
 
 ## Bugs
 
-You can use the GitHub issues or send me an [email](mailto:jonahisadev@gmail.com) and I'll take a look.
+You can use the GitHub issues or send me an [email](mailto:jonahisadev@gmail.com?subject=Scrape%20NewEgg%20Bug) and I'll take a look.
