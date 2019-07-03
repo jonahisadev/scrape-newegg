@@ -17,6 +17,9 @@ formatted in all lowercase with underscores replacing spaces.
 
 Everything is then returned as a JSON object for ease of use.
 
+The API doc is [here](docs/README.MD) if you would like to take
+a closer look!
+
 ## Example
 
 ```js
