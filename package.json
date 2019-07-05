@@ -1,6 +1,6 @@
 {
   "name": "scrape-newegg",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "An API for scraping NewEgg product information",
   "main": "scraper.js",
   "scripts": {

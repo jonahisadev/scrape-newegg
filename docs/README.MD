@@ -80,13 +80,13 @@ product.specs.model.processors_type.
 and currency (ex: "149.99 USD")
 
 Here is some example output:
-```json
+```js
 {
-  price: 149.99,
-  currency: 'USD',
-  rating: 5,
-  image_url: 'https://c1.neweggimages.com/NeweggImage/ProductImageCompressAll1280/19-113-496-V01.jpg',
-  specs: {
+  'price': 149.99,
+  'currency': 'USD',
+  'rating': 5,
+  'image_url': 'https://c1.neweggimages.com/NeweggImage/ProductImageCompressAll1280/19-113-496-V01.jpg',
+  'specs': {
     model: {
       brand: 'AMD',
       processors_type: 'Desktop',
@@ -114,9 +114,7 @@ Here is some example output:
       thermal_design_power: '65W',
       cooling_device: 'Heatsink and fan included'
     }
-  },
-  name: [Function: name],
-  priceStr: [Function: priceStr]
+  }
 }
 ```
 

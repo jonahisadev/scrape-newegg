@@ -6,7 +6,7 @@ const request = require('request');
 const $ = require('cheerio');
 
 function convert_key(key) {
-	return key.replace(/\s/gi, "_").toLowerCase();
+	return key.replace(/\s/gi, "_").replace(/-/gi, "_").toLowerCase();
 }
 
 module.exports.get = (url, cb) => {
