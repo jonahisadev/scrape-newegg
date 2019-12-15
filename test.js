@@ -6,17 +6,20 @@ function printProduct(prod) {
 	console.log("Rating: " + prod.rating);
 }
 
-// Full URL
-scraper.get("https://www.newegg.com/p/N82E16819113499", (prod) => printProduct(prod));
+(async () => {
+	// Full URL
+	await scraper.get_async("https://www.newegg.com/p/N82E16819113499").then(prod => {
+		printProduct(prod);
+	}).catch(err => {
+		console.log("ERROR: ");
+		console.log(err);
+	});
 
-// The AMD Ryzen 7 2700X is 306.38 USD
-// Image URL: https://c1.neweggimages.com/ProductImageCompressAll1280/19-113-499-V01.jpg
-// Rating: 5
-
-
-// Product ID
-scraper.get("N82E16814202237", (prod) => printProduct(prod));
-
-// The SAPPHIRE 100385L is 79.99 USD
-// Image URL: https://c1.neweggimages.com/ProductImageCompressAll1280/14-202-237-01.jpg
-// Rating: 4
+	// Product ID
+	await scraper.get_async("N82E16820147673").then(prod => {
+		printProduct(prod);
+	}).catch(err => {
+		console.log("ERROR: ");
+		console.log(err);
+	});
+})();

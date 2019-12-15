@@ -4,6 +4,7 @@
 // ----------------------------------------------------
 const request = require('request');
 const $ = require('cheerio');
+const util = require('util');
 
 function convert_key(key) {
 	return key.replace(/\s/gi, "_").replace(/-/gi, "_").toLowerCase();
@@ -37,16 +38,15 @@ module.exports.get = (url, cb) => {
 			}
 		};
 
-		// Price
-		html("div[itemtype='//schema.org/Offer']").children().map((i, el) => {
-			el = $(el);
-			const prop = el.attr("itemprop");
-			const data = el.attr("content");
-			if (prop == "price") {
-				json.price = parseFloat(data);
-			} else if (prop == "priceCurrency") {
-				json.currency = data;
-			}
+		// Price and Currency 
+		html("body").find('script[type="application/ld+json"]').each((i, el) => {
+			const data = el.children[0].data;
+			const price_regex = /\"price\":\"(.*?)\"?\"/g.exec(data);
+			const currency_regex = /\"priceCurrency\":\"(.*?)\"?\"/g.exec(data);
+			
+			if (price_regex == null) return;
+			json.price = parseFloat(price_regex[1]);
+			json.currency = currency_regex[1];
 		});
 
 		// Image URL
@@ -69,8 +69,13 @@ module.exports.get = (url, cb) => {
 			find("span[itemprop='ratingValue']").
 			attr("content"));
 
-		cb(json);
+		cb(null, json);
 	});
+};
+
+module.exports.get_async = async (url) => {
+	const get = util.promisify(module.exports.get);
+	return get(url);
 };
 
 module.exports.name = (data) => {
