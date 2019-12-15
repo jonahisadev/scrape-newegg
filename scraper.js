@@ -15,6 +15,11 @@ module.exports.get = (url, cb) => {
 		url = "https://www.newegg.com/p/" + url;
 	
 	request(url, (err, res, body) => {
+		if (err) {
+			console.log("ERROR");
+			console.log(err);
+		}
+
 		var html = $.load(body);
 		var json = {
 			price: 0.0,
@@ -68,6 +73,8 @@ module.exports.get = (url, cb) => {
 		json.rating = parseInt(html("div[itemprop='aggregateRating']").
 			find("span[itemprop='ratingValue']").
 			attr("content"));
+			
+		if (json.price == 0) cb("No price found", null);
 
 		cb(null, json);
 	});

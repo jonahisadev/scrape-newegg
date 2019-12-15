@@ -8,15 +8,7 @@ function printProduct(prod) {
 
 (async () => {
 	// Full URL
-	await scraper.get_async("https://www.newegg.com/p/N82E16819113499").then(prod => {
-		printProduct(prod);
-	}).catch(err => {
-		console.log("ERROR: ");
-		console.log(err);
-	});
-
-	// Product ID
-	await scraper.get_async("N82E16820147673").then(prod => {
+	await scraper.get_async("N82E16819113496").then(prod => {
 		printProduct(prod);
 	}).catch(err => {
 		console.log("ERROR: ");
