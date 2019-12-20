@@ -13,8 +13,12 @@ function convert_key(key) {
 module.exports.get = (url, cb) => {
 	if (!url.startsWith('https://'))
 		url = "https://www.newegg.com/p/" + url;
-	
-	request(url, (err, res, body) => {
+
+	var headers = {
+		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36'
+	}
+	console.log(headers);
+	request({url: url, headers: headers }, (err, res, body) => {
 		if (err) {
 			console.log("ERROR");
 			console.log(err);
