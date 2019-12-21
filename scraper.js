@@ -10,6 +10,10 @@ function convert_key(key) {
 	return key.replace(/\s/gi, "_").replace(/-/gi, "_").toLowerCase();
 }
 
+function extract_id(url) {
+	return /https:\/\/www\.newegg\.com\/p\/(.*)/g.exec(url)[1];
+}
+
 module.exports.get = (options, cb) => {
 	var url;
 	if (typeof(options) === 'string')
@@ -39,6 +43,7 @@ module.exports.get = (options, cb) => {
 
 		var html = $.load(body);
 		var json = {
+			id: extract_id(url),
 			price: 0.0,
 			currency: "",
 			rating: 0,
