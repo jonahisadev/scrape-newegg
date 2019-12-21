@@ -10,15 +10,28 @@ function convert_key(key) {
 	return key.replace(/\s/gi, "_").replace(/-/gi, "_").toLowerCase();
 }
 
-module.exports.get = (url, cb) => {
+module.exports.get = (options, cb) => {
+	var url;
+	if (typeof(options) === 'string')
+		url = options;
+	else
+		url = options.url;
+
 	if (!url.startsWith('https://'))
 		url = "https://www.newegg.com/p/" + url;
 
-	var headers = {
-		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36'
+	var req_params = {
+		url: url
 	}
-	console.log(headers);
-	request({url: url, headers: headers }, (err, res, body) => {
+
+	if (options.hasOwnProperty("headers")) {
+		req_params['headers'] = options.headers;
+	}
+	if (options.hasOwnProperty("proxy")) {
+		req_params['proxy'] = options.proxy;
+	}
+
+	request(req_params, (err, res, body) => {
 		if (err) {
 			console.log("ERROR");
 			console.log(err);
