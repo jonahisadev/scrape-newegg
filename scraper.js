@@ -34,6 +34,9 @@ module.exports.get = (options, cb) => {
 	if (options.hasOwnProperty("proxy")) {
 		req_params['proxy'] = options.proxy;
 	}
+	if (options.hasOwnProperty("timeout")) {
+		req_params['timeout'] = options.timeout;
+	}
 
 	request(req_params, (err, res, body) => {
 		if (err) {
