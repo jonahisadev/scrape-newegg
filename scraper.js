@@ -33,8 +33,7 @@ module.exports.get = (options, cb) => {
 
 	request(req_params, (err, res, body) => {
 		if (err) {
-			console.log("ERROR");
-			console.log(err);
+			cb(err, null);
 		}
 
 		var html = $.load(body);

@@ -6,6 +6,7 @@ function printProduct(prod) {
 	console.log("Image URL: " + prod.image_url);
 	// console.log("Rating: " + prod.rating);
 }
+
 (async () => {
 	await scraper.get_async('N82E16819113496').then(prod => {
 		printProduct(prod);
