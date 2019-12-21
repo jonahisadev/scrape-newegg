@@ -34,6 +34,7 @@ module.exports.get = (options, cb) => {
 	request(req_params, (err, res, body) => {
 		if (err) {
 			cb(err, null);
+			return;
 		}
 
 		var html = $.load(body);
